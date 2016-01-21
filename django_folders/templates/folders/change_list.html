@@ -1,0 +1,70 @@
+{% extends 'admin/change_list.html' %}
+{# load i18n admin_urls admin_static admin_list #}
+{% load folders_tags i18n spurl admin_static admin_urls %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <style type="text/css">
+    #folders {
+      max-height: 200px;
+      overflow: auto;
+      margin: 0;
+      padding: 0;
+    }
+    #folders li {
+      list-style: none;
+      line-height: 20px;
+      background: url({% static "img/plainfolder.png" %}) no-repeat;
+      padding-left: 27px;
+      margin-bottom: 5px;
+    }
+    .object-tools {
+      margin-right: 20px;
+    }
+
+  </style>
+{% endblock %}
+
+{% block breadcrumbs %}
+  <div class="breadcrumbs">
+    {% show_breadcrumbs cl.model %}
+  </div>
+{% endblock %}
+
+
+{% block content_title %}{% if title %}<h1>{% if current_folder %}{{ current_folder.name }} - {% endif %}{{ title }}</h1>{% endif %}{% endblock %}
+
+
+{% block object-tools-items %}
+  <li>
+    {% url cl.opts|admin_urlname:'add' as add_url %}
+    {% spurl base=add_url set_query='folder={{ current_folder.id }}' as admin_url %}
+    <a href="{% add_preserved_filters admin_url is_popup to_field %}" class="addlink">
+      {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
+    </a>
+  </li>
+  <li>
+    {% url 'admin:django_folders_folder_add' as add_url %}
+    {% spurl base=add_url set_query='parent={{ current_folder.id }}' as admin_url %}
+    <a href="{% add_preserved_filters admin_url is_popup to_field %}" class="addlink">
+      Ordner hinzufügen
+    </a>
+  </li>
+{% endblock %}
+
+
+{% block content %}
+  {# Show a folder navigation #}
+  <ul id="folders">
+    {% if current_folder.parent %}
+      {% include 'folders/folder-link.html' with folder=current_folder.parent folder_upwards=True %}
+    {% elif current_folder %}
+      {% include 'folders/folder-link.html' with folder_quit=True folder_upwards=True %}
+    {% endif %}
+    {% for folder in folder_children %}
+      {% include 'folders/folder-link.html' %}
+    {% endfor %}
+  </ul>
+
+  {{ block.super }}
+{% endblock %}

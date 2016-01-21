@@ -1,0 +1,14 @@
+{% load i18n spurl %}
+
+<li>
+  <a href="{% if folder_quit %}{% spurl base=request.get_full_path remove_query_param='folder__id' %}{% else %}{% spurl base=request.get_full_path set_query='folder__id={{ folder.id }}' %}{% endif %}" class="admin-image-folder">
+    {% if folder_upwards %}
+      &#8593;
+    {% endif %}
+    {% if folder_quit %}
+      {% trans 'Ordner verlassen' %}
+    {% else %}
+      {{ folder.name }}
+    {% endif %}
+  </a>
+</li>

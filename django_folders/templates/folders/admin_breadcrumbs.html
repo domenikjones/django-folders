@@ -1,0 +1,22 @@
+{% load spurl %}
+
+
+<a href="{% url 'admin:index' %}">Start</a>
+
+&rsaquo; <a href="{{ app_url }}">{{ app_label }}</a>
+
+{% if not current_folder and not link_to_current_folder %}
+  &rsaquo; {{ model_label }}
+{% else %}
+  &rsaquo; <a href="{{ changelist_url }}">{{ model_label }}</a>
+{% endif %}
+
+{% for folder in current_folder.get_ancestors %}
+  &rsaquo; <a href="{% spurl base=changelist_url set_query='folder__id={{ folder.id }}' %}">{{ folder }}</a>
+{% endfor %}
+
+{% if current_folder and link_to_current_folder %}
+  &rsaquo; <a href="{% spurl base=changelist_url set_query='folder__id={{ current_folder.id }}' %}">{{ current_folder }}</a>
+{% elif current_folder %}
+  &rsaquo; {{ current_folder }}
+{% endif %}
