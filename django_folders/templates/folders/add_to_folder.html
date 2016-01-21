@@ -1,0 +1,16 @@
+{% extends "admin/base_site.html" %}
+
+
+{% block content %}
+<p>Wählen Sie bitte einen Ordner aus:</p>
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+
+    <p>Folgende Objekte werden in den Ordner verschoben:</p>
+    <ul>{{ objects|unordered_list }}</ul>
+
+    <input type="hidden" name="action" value="add_to_folder" />
+    <input type="submit" name="apply" value="verschieben" />
+</form>
+{% endblock %}
