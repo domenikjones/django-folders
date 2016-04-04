@@ -83,6 +83,7 @@ class FolderAdminMixin(object):
         return render_to_response(
             'folders/add_to_folder.html',
             {
+                'model': self.model,
                 'objects': queryset,
                 'form': form,
             },
