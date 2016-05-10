@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name="django-folders",
     author="Jonas und der Wolf GmbH",
-    author_email="alexander.frenzel@jonasundderwolf.de",
+    author_email="info@jonasundderwolf.de",
     version='0.1',
     packages=find_packages(),
     install_requires=['django-spurl'],
