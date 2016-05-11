@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.core.exceptions import ValidationError
 from django.db import models
 
 
@@ -9,6 +10,10 @@ class Folder(models.Model):
         related_name='children',
         verbose_name="Überordner"
     )
+
+    def clean(self):
+        if self.id and self.parent and self.parent.id == self.id:
+            raise ValidationError("Kann nicht Überordner von sich selbst sein")
 
     def get_ancestors(self):
         try:
