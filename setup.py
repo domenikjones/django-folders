@@ -4,7 +4,7 @@ setup(
     name="django-folders",
     author="Jonas und der Wolf GmbH",
     author_email="info@jonasundderwolf.de",
-    version='0.1',
+    version='0.2',
     packages=find_packages(),
     install_requires=['django-spurl'],
     include_package_data=True,
