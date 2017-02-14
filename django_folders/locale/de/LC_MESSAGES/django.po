@@ -1,0 +1,80 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-02-14 11:16+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: django_folders/admin.py:30 django_folders/admin.py:53
+#: django_folders/models.py:50 django_folders/models.py:51
+#: django_folders/models.py:57
+msgid "Ordner"
+msgstr ""
+
+#: django_folders/admin.py:69
+#, python-format
+msgid ""
+"%(model_label)s wurden erfolgreich in den Ordner '%(folder)s' verschoben."
+msgstr ""
+
+#: django_folders/admin.py:93
+msgid "In Ordner verschieben"
+msgstr ""
+
+#: django_folders/apps.py:7
+msgid "Folders"
+msgstr ""
+
+#: django_folders/forms.py:10
+msgid "Elternordner"
+msgstr ""
+
+#: django_folders/models.py:7
+msgid "Name"
+msgstr ""
+
+#: django_folders/models.py:11
+msgid "Überordner"
+msgstr ""
+
+#: django_folders/models.py:16
+msgid "Kann nicht Überordner von sich selbst sein"
+msgstr ""
+
+#: django_folders/templates/folders/add_to_folder.html:11
+msgid "Wählen Sie bitte einen Ordner aus:"
+msgstr ""
+
+#: django_folders/templates/folders/add_to_folder.html:16
+msgid "Folgende Objekte werden in den Ordner verschoben:"
+msgstr ""
+
+#: django_folders/templates/folders/admin_breadcrumbs.html:4
+msgid "Start"
+msgstr ""
+
+#: django_folders/templates/folders/change_form.html:8
+msgid "hinzufügen"
+msgstr ""
+
+#: django_folders/templates/folders/change_list.html:42
+#, python-format
+msgid "Add %(name)s"
+msgstr ""
+
+#: django_folders/templates/folders/folder-link.html:9
+msgid "Ordner verlassen"
+msgstr ""
