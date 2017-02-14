@@ -46,7 +46,7 @@
     {% url 'admin:django_folders_folder_add' as add_url %}
     {% spurl base=add_url set_query='parent={{ current_folder.id }}' as admin_url %}
     <a href="{% add_preserved_filters admin_url is_popup to_field %}" class="addlink">
-      Ordner hinzufügen
+      {% trans "Ordner hinzufügen" %}
     </a>
   </li>
 {% endblock %}

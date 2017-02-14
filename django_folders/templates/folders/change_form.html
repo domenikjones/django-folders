@@ -5,6 +5,6 @@
 {% block breadcrumbs %}
   <div class="breadcrumbs">
     {% show_breadcrumbs opts.model %}
-    &rsaquo; {% if add %}{{ opts.verbose_name }} {% trans "hinzufügen" %}{% else %}{{ original|truncatewords:"18" }}{% endif %}
+    &rsaquo; {% if add %}{% blocktrans with name=opts.verbose_name %}{{ name }} hinzufügen{% endblocktrans %}{% else %}{{ original|truncatewords:"18" }}{% endif %}
   </div>
 {% endblock %}
