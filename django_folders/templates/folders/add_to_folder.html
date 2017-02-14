@@ -1,5 +1,5 @@
 {% extends "admin/base_site.html" %}
-{% load folders_tags %}
+{% load folders_tags i18n %}
 
 {% block breadcrumbs %}
   <div class="breadcrumbs">
@@ -8,12 +8,12 @@
 {% endblock %}
 
 {% block content %}
-<p>Wählen Sie bitte einen Ordner aus:</p>
+<p>{% trans "Wählen Sie bitte einen Ordner aus:" %}</p>
 
 <form action="" method="post">{% csrf_token %}
     {{ form.as_p }}
 
-    <p>Folgende Objekte werden in den Ordner verschoben:</p>
+    <p>{% trans "Folgende Objekte werden in den Ordner verschoben:" %}</p>
     <ul>{{ objects|unordered_list }}</ul>
 
     <input type="hidden" name="action" value="add_to_folder" />

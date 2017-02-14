@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django import forms
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from django.utils.translation import ugettext_lazy as _, ugettext
 
 from .fields import FolderModelChoiceField
 from .forms import FolderAdminForm
@@ -26,7 +27,7 @@ class FolderAdminMixin(object):
         if db_field.name == 'folder':
             return FolderModelChoiceField(queryset=Folder.objects.all(),
                                           required=False,
-                                          label="Ordner")
+                                          label=_("Ordner"))
         return super(FolderAdminMixin, self).formfield_for_dbfield(
             db_field, **kwargs)
 
@@ -49,7 +50,7 @@ class FolderAdminMixin(object):
         class FolderSelectForm(forms.Form):
             _selected_action = forms.CharField(widget=forms.MultipleHiddenInput)
             folder = FolderModelChoiceField(queryset=Folder.objects.all(),
-                                            label="Ordner")
+                                            label=_("Ordner"))
 
         form = None
 
@@ -65,10 +66,10 @@ class FolderAdminMixin(object):
 
                 self.message_user(
                     request,
-                    ("{model_label} wurden erfolgreich in den Ordner '{folder}' "
-                     "verschoben.").format(
-                        model_label=queryset.model._meta.verbose_name_plural,
-                        folder=folder.name,
+                    ugettext("%(model_label)s wurden erfolgreich in den Ordner "
+                        "'%(folder)s' verschoben.") % dict(
+                            model_label=queryset.model._meta.verbose_name_plural,
+                            folder=folder.name,
                     )
                 )
                 return HttpResponseRedirect(request.get_full_path())
@@ -89,4 +90,4 @@ class FolderAdminMixin(object):
             },
             context_instance=RequestContext(request),
         )
-    add_to_folder.short_description = "In Ordner verschieben"
+    add_to_folder.short_description = _("In Ordner verschieben")

@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
 from django.core.exceptions import ValidationError
 from django.db import models
-
+from django.utils.translation import ugettext_lazy as _
 
 class Folder(models.Model):
-    name = models.CharField("Name", max_length=50)
+    name = models.CharField(_("Name"), max_length=50)
     parent = models.ForeignKey(
         'self', blank=True, null=True,
         related_name='children',
-        verbose_name="Überordner"
+        verbose_name=_("Überordner")
     )
 
     def clean(self):
         if self.id and self.parent and self.parent.id == self.id:
-            raise ValidationError("Kann nicht Überordner von sich selbst sein")
+            raise ValidationError(_("Kann nicht Überordner von sich selbst sein"))
 
     def get_ancestors(self):
         try:
@@ -47,14 +47,14 @@ class Folder(models.Model):
 
     class Meta:
         ordering = ['name']
-        verbose_name = "Ordner"
-        verbose_name_plural = "Ordner"
+        verbose_name = _("Ordner")
+        verbose_name_plural = _("Ordner")
 
 
 class FolderMixin(models.Model):
     folder = models.ForeignKey(
         Folder, blank=True, null=True,
-        verbose_name="Ordner"
+        verbose_name=_("Ordner")
     )
 
     class Meta:

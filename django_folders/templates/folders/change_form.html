@@ -1,10 +1,10 @@
 {% extends 'admin/change_form.html' %}
-{% load folders_tags %}
+{% load folders_tags i18n %}
 
 
 {% block breadcrumbs %}
   <div class="breadcrumbs">
     {% show_breadcrumbs opts.model %}
-    &rsaquo; {% if add %}{{ opts.verbose_name }} hinzufügen{% else %}{{ original|truncatewords:"18" }}{% endif %}
+    &rsaquo; {% if add %}{{ opts.verbose_name }} {% trans "hinzufügen" %}{% else %}{{ original|truncatewords:"18" }}{% endif %}
   </div>
 {% endblock %}

@@ -1,7 +1,7 @@
-{% load spurl %}
+{% load spurl i18n %}
 
 
-<a href="{% url 'admin:index' %}">Start</a>
+<a href="{% url 'admin:index' %}">{% trans "Start" %}</a>
 
 &rsaquo; <a href="{{ app_url }}">{{ app_label }}</a>
 
